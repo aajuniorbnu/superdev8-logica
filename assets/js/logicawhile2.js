@@ -696,15 +696,15 @@ function exercicio41() {
 function exercicio42() {
     let opcao;
     while ((opcao = prompt('1-Celsius→Fahrenheit\n2-Fahrenheit→Celsius\n10-Sair')) !== '10') {
-        let temp;
+        let temperatura; 
         switch (opcao) {
             case '1':
-                temp = parseFloat(prompt('Temperatura Celsius:'));
-                alert(temp + '°C = ' + ((temp * 9/5) + 32).toFixed(2) + '°F');
+                temperatura = parseFloat(prompt('Temperatura Celsius:'));
+                alert(temperatura + '°C = ' + ((temperatura * 9/5) + 32).toFixed(2) + '°F');
                 break;
             case '2':
-                temp = parseFloat(prompt('Temperatura Fahrenheit:'));
-                alert(temp + '°F = ' + ((temp - 32) * 5/9).toFixed(2) + '°C');
+                tempetarura = parseFloat(prompt('Temperatura Fahrenheit:'));
+                alert(temperatura+ '°F = ' + ((temperatura - 32) * 5/9).toFixed(2) + '°C');
                 break;
             default:
                 alert('Opção inválida!');
