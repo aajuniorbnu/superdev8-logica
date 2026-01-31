@@ -909,3 +909,11 @@ function exercicio50() {
     let media = (somaNota / titulos).toFixed(2);
     alert('Maior nota: ' + nomeMaior + ' (' + maiorNota + ')\nMenor nota: ' + nomeMenor + ' (' + menorNota + ')\nMédia: ' + media + '\nFilmes: ' + filme + '\nSéries: ' + serie + '\nAnimes: ' + anime);
 }
+function exercicio51() {
+    let contador = 10;
+    while(contador <= 0)
+        contador - contador ;
+    alert("Contagem finalizada!");      
+    
+}
+   
