@@ -380,17 +380,17 @@ for (let i = 0; i < produtos.length; i = i + 1) {
 }
 
 
-function exercicioFibonacci(){
-const number = parseInt(prompt('Enter the number of terms: '));
-let n1 = 0, n2 = 1, nextTerm;
+function exercicioFibonacci() {
+    const number = parseInt(prompt('Digite os numeros da sequencia: '));
+    let numero1 = 0, numero2 = 1, nextTerm;
 
-console.log('Fibonacci Series:');
+    console.log(' Sequencia Fibonacci :');
 
-for (let i = 1; i <= number; i++) {
-    console.log(n1);
-    nextTerm = n1 + n2;
-    n1 = n2;
-    n2 = nextTerm;
-}
+    for (let i = 1; i <= number; i = i + 1) {
+        console.log(n1);
+        nextTerm = numero1 + numero2;
+        numero1 = numero2;
+        numero2 = nextTerm;
+    }
 }
 
