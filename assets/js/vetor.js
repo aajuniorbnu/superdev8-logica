@@ -6,7 +6,7 @@ function exemplo1(){
 alert("abre o console filhao");
     let frutas = [];//criando vetor
     //adicionando elementos no vetor
-    frtuas.push("Maça");
+    frutas.push("Maça");
     frutas.push("Pera");
     frutas.push("Tomtate");
     frutas.push("Rucúla");
