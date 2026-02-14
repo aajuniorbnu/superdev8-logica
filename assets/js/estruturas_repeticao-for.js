@@ -2,10 +2,11 @@ function exemplo01() {
     // solicitar o nome de quatro pessoas
     //Declarando a variavel
     let indice = 0;
+    let nome = [];
     //condiçao 
     while (indice <4) {
         let nome = prompt(`Digite o nome`);
-        indece = indice + 1;
+        indice = indice + 1;
   }
 //declarar variavel
 //condiçao

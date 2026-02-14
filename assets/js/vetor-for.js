@@ -180,217 +180,81 @@ function alunos() {
 }
 
 function exercicio01() {
-    let smartphone = [];
-    let quantidadeSmartphonesEstoqoue = parseInt(prompt("Digite a quatidade"));
-    let statusEstoque = [];
+    let smartphones = [];
     let quantidadeEstoque = [];
-    let preco = parseFloat(prompt(`Digite o preço unitário :`));
+    let precosUnitarios = [];
 
-
+    // COLETA DE DADOS
     for (let i = 0; i < 5; i = i + 1) {
-        let nomeSmartphone = prompt("Digite o nome do smartphone:");
-        smartphone.push(nomeSmartphone);
-        let quantidadeEstoque = parseInt(prompt("Digite a quantidade em estoque:"));
+        let nome = prompt(`Digite o nome do ${i + 1}º smartphone:`);
+        let quantidade = parseInt(prompt(`Digite a quantidade em estoque de ${nome}:`));
+        let preco = parseFloat(prompt(`Digite o preço unitário de ${nome}:`));
 
-        quantidadeSmartphonesEstoqoue.push(quantidadeEstoque);
-        precoUnitario.push(preco)
+        smartphones.push(nome);
+        quantidadeEstoque.push(quantidade);
+        precosUnitarios.push(preco);
     }
-    for (let i = 0; i < 5; i = i + 1) {
-        let status = statusEstoque
-        let nomeSmartphone = prompt("Digite o nome do smartphone:");
-        smartphone.push(nomeSmartphone);
-        let quantidadeEstoque = parseInt(prompt("Digite a quantidade em estoque:"));
 
-        quantidadeSmartphonesEstoqoue.push(quantidadeEstoque);
-        precoUnitario.push(preco)
+    // CÁLCULO DO MAIOR ESTOQUE
+    let maiorQuantidade = quantidadeEstoque[0];
+    let indiceMaior = 0;
 
-        if (quantidadeEstoque[i] >= 10) {
-            statusEstoque = 'Elevado';
-
-        } else if (quantidadeEstoque[i] >= 7) {
-            statusEstoque = 'Estável';
-
-        } else if (quantidadeEstoque[i] >= 4) {
-            statusEstoque = 'Preocupante';
-
-        } else if (quantidadeEstoque[i] >= 1) {
-            statusEstoque = 'Urgente';
-        }
-        for (let i = 1; i < quantidadeEstoque.length; i = i + 1) {
-            if (quantidadeEstoque[i] < menorQuantidade) {
-                menorQuantidade = quantidadeEstoque[i];
-            }
-        }
-        for (let i = 0; i < 5; i = i + 1) {
-            let nomeSmartphone = prompt(`Digite o nome do ${i + 1}º smartphone:`);
-            let quantidade = parseInt(prompt(`Digite a quantidade em estoque de ${nomeSmartphone}:`));
-            let preco = parseFloat(prompt(`Digite o preço unitário de ${nomeSmartphone}:`));
-
-            smartphone.push(nomeSmartphone);
-            quantidadeEstoque.push(quantidade);
-            precosUnitarios.push(preco);
-        }
-
-
-        let maiorQuantidade = quantidadeEstoque[0];
-        let indiceMaior = 0;
-
-        for (let i = 1; i < 5; i = i + 1) {
-            if (quantidadeEstoque[i] > maiorQuantidade) {
-                maiorQuantidade = quantidadeEstoque[i];
-                indiceMaior = i;
-            }
-        }
-        let menorQuantidade = quantidadeEstoque[0];
-
-        for (let i = 1; i < quantidadeEstoque.length; i++) {
-            if (quantidadeEstoque[i] < menorQuantidade) {
-                menorQuantidade = quantidadeEstoque[i];
-            }
-        }
-        let valorTotalGeral = 0;
-        for (let i = 0; i < smartphone.length; i = i + 1) {
-            valorTotalGeral += quantidadeEstoque[i] * precosUnitarios[i];
-        }
-
-
-        let mensagem = "LISTA COMPLETA DE SMARTPHONES\n";
-        mensagem += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
-
-        for (let i = 0; i < smartphone.length; i = i + 1) {
-            let status = '';
-
-
-            if (quantidadeEstoque[i] >= 10) {
-                status = 'Elevado';
-
-            } else if (quantidadeEstoque[i] >= 7) {
-                status = 'Estável';
-
-            } else if (quantidadeEstoque[i] >= 4) {
-                status = 'Preocupante';
-
-            } else if (quantidadeEstoque[i] >= 1) {
-                status = 'Urgente';
-
-
-            }
-
-
+    for (let i = 1; i < 5; i = i + 1) {
+        if (quantidadeEstoque[i] > maiorQuantidade) {
+            maiorQuantidade = quantidadeEstoque[i];
+            indiceMaior = i;
         }
     }
-    for (let i = 0; i < smartphone.length; i = i + 1) {
+
+    // CÁLCULO DO MENOR ESTOQUE
+    let menorQuantidade = quantidadeEstoque[0];
+
+    for (let i = 1; i < quantidadeEstoque.length; i = i + 1) {
+        if (quantidadeEstoque[i] < menorQuantidade) {
+            menorQuantidade = quantidadeEstoque[i];
+        }
+    }
+
+    // CÁLCULO DO VALOR TOTAL GERAL
+    let valorTotalGeral = 0;
+    for (let i = 0; i < smartphones.length; i = i + 1) {
+        valorTotalGeral = valorTotalGeral + (quantidadeEstoque[i] * precosUnitarios[i]);
+    }
+
+    // MONTAGEM DA MENSAGEM
+    let mensagem = "LISTA COMPLETA DE SMARTPHONES\n";
+    mensagem = mensagem + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
+
+    for (let i = 0; i < smartphones.length; i = i + 1) {
         let status = '';
-
 
         if (quantidadeEstoque[i] >= 10) {
             status = 'Elevado';
-
         } else if (quantidadeEstoque[i] >= 7) {
             status = 'Estável';
-
         } else if (quantidadeEstoque[i] >= 4) {
             status = 'Preocupante';
-
         } else if (quantidadeEstoque[i] >= 1) {
             status = 'Urgente';
-
-
-
-            let valorTotalEstoque = quantidadeEstoque[i] * precosUnitarios[i];
-
-            mensagem += `${i + 1}. ${smartphones[i]}\n`;
-            mensagem += ` Preço: R$ ${precosUnitarios[i].toFixed(2)}\n`;
-            mensagem += ` Estoque: ${quantidadeEstoque[i]} unidades\n`;
-            mensagem += `Valor Total: R$ ${valorTotalEstoque.toFixed(2)}\n`;
-            mensagem += `Status: ${emoji} ${status}\n\n`;
+        } else {
+            status = 'Esgotado';
         }
 
+        let valorTotalEstoque = quantidadeEstoque[i] * precosUnitarios[i];
 
-        mensagem += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
-        mensagem += "ESTATÍSTICAS\n";
-        mensagem += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
-        mensagem += ` Maior Estoque:\n   ${smartphones[indiceMaior]} (${maiorQuantidade} un.)\n\n`;
-        mensagem += ` Menor Quantidade: ${menorQuantidade} un.\n\n`;
-        mensagem += ` Valor Total em Estoque:\n   R$ ${valorTotalGeral.toFixed(2)}`;
-
-        alert(mensagem);
-
+        mensagem = mensagem + `${i + 1}. ${smartphones[i]}\n`;
+        mensagem = mensagem + `   Preço: R$ ${precosUnitarios[i].toFixed(2)}\n`;
+        mensagem = mensagem + `   Estoque: ${quantidadeEstoque[i]} unidades\n`;
+        mensagem = mensagem + `   Valor Total: R$ ${valorTotalEstoque.toFixed(2)}\n`;
+        mensagem = mensagem + `   Status: ${status}\n\n`;
     }
 
+    mensagem = mensagem + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
+    mensagem = mensagem + "ESTATÍSTICAS\n";
+    mensagem = mensagem + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
+    mensagem = mensagem + `Maior Estoque:\n   ${smartphones[indiceMaior]} (${maiorQuantidade} un.)\n\n`;
+    mensagem = mensagem + `Menor Quantidade: ${menorQuantidade} un.\n\n`;
+    mensagem = mensagem + `Valor Total em Estoque:\n   R$ ${valorTotalGeral.toFixed(2)}`;
+
+    alert(mensagem);
 }
-
-
-
-function exercicio02() {
-
-    let produtos = [];
-    let categorias = [];
-    let precos = [];
-    let descontos = [];
-
-    for (let i = 0; i < 5; i = i + 1) {
-        let nome = prompt(`Digite o nome do produto ${i + 1}:`);
-        let categoria = prompt(`Digite a categoria do produto ${i + 1}:`);
-        let preco = parseFloat(prompt(`Digite o preço do produto ${i + 1}:`));
-        let desconto = parseFloat(prompt(`Digite o desconto (%) do produto ${i + 1}:`));
-
-        produtos.push(nome);
-        categorias.push(categoria);
-        precos.push(preco);
-        descontos.push(desconto);
-    }
-}
-for (let i = 0; i < precos.length; i = i + 1) {
-    let classificacao;
-
-    if (precos[i] >= 100) {
-        classificacao = "Caro";
-    } else if (precos[i] >= 50) {
-        classificacao = "Médio";
-    } else if (precos[i] >= 20) {
-        classificacao = "Barato";
-    } else {
-        classificacao = "Muito barato";
-    }
-
-}
-
-let maiorPreco = precos[0];
-for (let i = 1; i < precos.length; i = i + 1) {
-    if (precos[i] > maiorPreco) {
-        maiorPreco = precos[i];
-    }
-}
-
-let menorPreco = precos[0];
-let indiceMenor = 0;
-
-for (let i = 1; i < precos.length; i = i + 1) {
-    if (precos[i] < menorPreco) {
-        menorPreco = precos[i];
-        indiceMenor = i;
-    }
-}
-
-for (let i = 0; i < produtos.length; i = i + 1) {
-    let precoFinal = precos[i] - (precos[i] * descontos[i] / 100);
-
-    alert(`Produto: ${produtos[i]} | Preço: R$ ${precos[i]} | Desc: ${descontos[i]}% | Final: R$ ${precoFinal}\n`)
-}
-
-
-function exercicioFibonacci() {
-    const number = parseInt(prompt('Digite os numeros da sequencia: '));
-    let numero1 = 0, numero2 = 1, nextTerm;
-
-    console.log(' Sequencia Fibonacci :');
-
-    for (let i = 1; i <= number; i = i + 1) {
-        console.log(n1);
-        nextTerm = numero1 + numero2;
-        numero1 = numero2;
-        numero2 = nextTerm;
-    }
-}
-
